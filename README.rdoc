@@ -1,0 +1,48 @@
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version: 2.2.5
+* Rails: 4.2.8
+
+Bundle
+
+* Database creation
+  rake db: create
+
+* Database initialization
+  rake db:seed
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+
+
+Development Process:
+
+I want to take you through development process, and the thought which came to the mind while developing the solution.
+
+
+* Designing Architecture
+  - Firstly, designed users table. Made roles and status enum(Improvement: roles and be moved out in association). Enum when in db's make query faster because it only store integer and can be indexed easily.
+  - Model and validation comes next to differ access of novice and expert.
+
+  - Second, designed campaigns table which has title, tags and estimation. I strongly believe tag and taggings should be moved to association(like acts as tagging, which gives power and ease to search and associate campaigns with tags), for which I fell short of time, otherwise I preferred it that way.
+  - Then comes the validation and model creation for campaign. Added indexes for foreign keys and integer columns.
+
+  - Third, Todos: I was bit confused in todo's as it did not specify wheather to create multiple lists by users or multiple todos. I tried to keep it simple, and made todo's without todo lists.
+  - I wanted to put validation for all todos duration must be less than(or equal to) their parents campaign estimation duration.
+
+  - Then comments table, I thought about it. Because comments are used at two places, namely todo and campaign, I used polymorphic to map the relationship.
+  Although polymorphic is an antipattern as it do not abide data integrity, it has a use case here.
+
+  - Post validation and models, I made controller and views, try to use DRY when i found need, Although I feed it can be implemented strictly than I did here.
+
+
+PS:
+  - I have to create user and sessions here because without them we cannot see two different role opertaing,
+  Also I divided some 'Expert'  role work to admin, for which I created admin namespace/module. Session and user authentication took some time.

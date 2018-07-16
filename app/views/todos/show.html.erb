@@ -1,0 +1,28 @@
+<% todo = @todo %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <h3><strong>Todo</strong></h3>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h4><strong>Title: <%= todo.title.capitalize %></strong></h4>
+        <strong>Tag:</strong> <%= todo.created_at.strftime("Created on: %m/%d/%Y") %> <br>
+        <% if todo.user.novice? %>
+          <%= form_for [todo, Comment.new] do |f| %>
+            <div class="form-group">
+              <div> Comment: <%= f.text_field :title, class: 'form-control' %> </div>
+              <div> <%= f.submit 'Post Comment', class: 'btn btn-default' %></div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <h3><strong>Comments</strong></h3>
+    <%= render partial: 'comments/comment', collection: @comments %>
+  </div>
+</div>

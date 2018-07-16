@@ -1,0 +1,18 @@
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="pull-right"><%= link_to :edit, edit_admin_user_path(user) %></div>
+        <h4><strong>Name: <%= user.name.capitalize %></strong><small>  <%= user.role %> </small></h4>
+        <strong>Email:</strong> <%= user.email %> <br>
+        <strong>Status:</strong> <%= user.status %> <br>
+
+        <% if user.expert? %>
+          <strong>Profession:</strong> <%= user.profession %> <br>
+          <strong>Service:</strong> <%= user.service %> <br>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

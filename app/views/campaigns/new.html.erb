@@ -1,0 +1,14 @@
+<div class="container">
+  <%= form_for @campaign do |f| %>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        Title: <%= f.text_field :title, class: 'form-control' %>
+        Tag: <%= f.text_field :tag, class: 'form-control' %>
+        Duration(no of months): <%= f.text_field :duration, class: 'form-control' %>
+        <%= f.submit class: 'btn btn-default' %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+

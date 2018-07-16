@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="col-md-10 col-md-offset-1"><h4>Campaign</h4> </div>
+
+  <%= render partial: 'campaign', locals: { campaign: @campaign } %>
+</div>
+
+<div class="container">
+  <div class="col-md-10 col-md-offset-2">
+    <h4>
+      Todos
+      <%= link_to 'create todo', new_campaign_todo_path(@campaign), class: 'col-md-offset-8' %>
+    </h4>
+   </div>
+  <div class="col-md-10 col-md-offset-1">
+    <%= render partial: 'todos/todo', collection: @todos %>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="col-md-10 col-md-offset-1">
+    <%#= render partial: 'comments/', collection: @todos %>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <h3><strong>Comments</strong></h3>
+        <%= render partial: 'comments/comment', collection: @comments %>
+      </div>
+    </div>
+  </div>
+</div>

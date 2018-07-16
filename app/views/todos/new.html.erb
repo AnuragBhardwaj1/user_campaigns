@@ -1,0 +1,5 @@
+
+<%= form_for [@campaign, @todo] do |f| %>
+  <%= f.text_field :title %>
+  <%= f.submit 'create', class: 'btn btn-default' %>
+<% end %>

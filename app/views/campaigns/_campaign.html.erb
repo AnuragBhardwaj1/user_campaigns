@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="pull-right" style="padding-left: 5px"><%= link_to :view, campaign_path(campaign) %></div>
+        <% if campaign.owner?(current_user) %>
+          <div class="pull-right"><%= link_to :edit, edit_campaign_path(campaign) %></div>
+        <% end %>
+        <h4><strong>Title: <%= campaign.title.capitalize %></strong></h4>
+        <strong><div class="pull-right" style="padding-left: 5px">comments: <%= campaign.comments.count %></div></strong>
+        <strong>Tag:</strong> <%= campaign.tag %> <br>
+        <strong>Duration:</strong> <%= campaign.duration %> months <br>
+        <%= form_for [campaign, Comment.new] do |f| %>
+          <div class="form-group">
+            <div> Comment: <%= f.text_field :title, class: 'form-control' %> </div>
+            <div> <%= f.submit 'Post Comment', class: 'btn btn-default' %></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
